@@ -1,6 +1,6 @@
+import { NgFor } from '@angular/common';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgFor } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
@@ -14,8 +14,8 @@ import { RecipeItemComponent } from './recipe-item/recipe-item.component';
   imports: [NgFor, RecipeItemComponent],
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
-  recipes: Recipe[];
-  subscription: Subscription;
+  recipes: Recipe[] = [];
+  subscription!: Subscription;
 
   private recipeService = inject(RecipeService);
   private router = inject(Router);

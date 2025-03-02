@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgIf, NgFor, CommonModule } from '@angular/common';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
@@ -9,11 +9,11 @@ import { RecipeService } from '../recipe.service';
   templateUrl: './recipe-details.component.html',
   styleUrls: ['./recipe-details.component.css'],
   standalone: true,
-  imports: [NgIf, NgClass, RouterLink],
+  imports: [CommonModule, NgIf, NgClass, RouterLink, NgFor],
 })
 export class RecipeDetailsComponent implements OnInit {
-  recipe: Recipe;
-  id: number;
+  recipe!: Recipe;
+  id!: number;
 
   private recipeService = inject(RecipeService);
   private route = inject(ActivatedRoute);

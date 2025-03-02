@@ -14,7 +14,8 @@ import { DataStorageService } from '../shared/data-storage.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
-  private userSub: Subscription;
+  isMenuOpen = false;
+  private userSub!: Subscription;
 
   private dataStorageService = inject(DataStorageService);
   private authService = inject(AuthService);
@@ -23,6 +24,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userSub = this.authService.user.subscribe((user) => {
       this.isAuthenticated = !!user;
     });
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 
   onSaveData() {

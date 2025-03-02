@@ -1,25 +1,61 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a href="#" class="navbar-brand">Recipe Book</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li routerLinkActive="active" *ngIf="isAuthenticated"><a routerLink="/recipes">Recipes</a></li>
-                <li routerLinkActive="active" *ngIf="!isAuthenticated"><a routerLink="/auth">Authenticate</a></li>
-                <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="isAuthenticated"><a style="cursor: pointer;" (click)="onLogout()">Logout</a></li>
-                <li class="dropdown" appDropdown *ngIf="isAuthenticated">
-                    <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
-                        <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-content">
+      <a routerLink="/" class="navbar-brand">
+        <i class="fas fa-utensils"></i>
+        Recipe Book
+      </a>
+
+      <button class="navbar-toggle" (click)="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <ul class="nav-list" [class.show]="isMenuOpen">
+        <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+          <a routerLink="/recipes">
+            <i class="fas fa-book-open"></i>
+            Recipes
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="!isAuthenticated">
+          <a routerLink="/auth">
+            <i class="fas fa-user"></i>
+            Sign In
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a routerLink="/shopping-list">
+            <i class="fas fa-shopping-basket"></i>
+            Shopping List
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated">
+          <a (click)="onLogout()" style="cursor: pointer">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+          </a>
+        </li>
+        <li class="nav-item dropdown" appDropdown *ngIf="isAuthenticated">
+          <a style="cursor: pointer" class="dropdown-toggle">
+            <i class="fas fa-cog"></i>
+            Manage
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a (click)="onSaveData()">
+                <i class="fas fa-save"></i>
+                Save Data
+              </a>
+            </li>
+            <li>
+              <a (click)="onFetchData()">
+                <i class="fas fa-cloud-download-alt"></i>
+                Fetch Data
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>

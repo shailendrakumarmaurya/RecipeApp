@@ -10,6 +10,6 @@ import { Recipe } from '../../recipe.model';
   imports: [RouterLink],
 })
 export class RecipeItemComponent {
-  @Input() recipe: Recipe;
-  @Input() index: number;
+  @Input({ required: true }) recipe!: Recipe;
+  @Input({ required: true }) index!: number;
 }

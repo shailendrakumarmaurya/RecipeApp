@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class AlertComponent {
-  @Input() message: string;
+  @Input({ required: true }) message!: string;
   @Output() close = new EventEmitter<void>();
 
   onClose() {

@@ -13,8 +13,8 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
   imports: [CommonModule, ShoppingEditComponent],
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  ingredients: Ingredient[];
-  private igChangeSub: Subscription;
+  ingredients: Ingredient[] = [];
+  private igChangeSub!: Subscription;
   private slService = inject(ShoppingListService);
 
   ngOnInit(): void {
@@ -25,9 +25,11 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       }
     );
   }
+
   onEditItem(index: number) {
     this.slService.startedEditing.next(index);
   }
+
   ngOnDestroy(): void {
     this.igChangeSub.unsubscribe();
   }
