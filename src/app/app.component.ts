@@ -4,10 +4,11 @@ import { AuthService } from './auth/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(private authServica: AuthService) { }
+  title = 'RecipeApp';
+  constructor(private authServica: AuthService) {}
   ngOnInit(): void {
     this.authServica.autoLogin();
   }
